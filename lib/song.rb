@@ -61,12 +61,12 @@ def self.create_from_filename(filename)
   song.artist_name= split_filename[0]
   song.save
   song
-  
-  
+
+
 end
 
 def self.destroy_all
-  
+
 end
 
 
