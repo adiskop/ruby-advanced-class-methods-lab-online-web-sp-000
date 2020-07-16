@@ -43,16 +43,26 @@ def self.alphabetical
 @@all.sort_by{|song|song.name}
 end
 
-def self.create_from_filename(filename)
+def self.new_from_filename(filename)
   split_filename= filename.chomp(".mp3").split(" - ")
   #split_filename= filename.chop.chop.chop.chop(".mp3").split(" - ")
   song= Song.new
   song.name= split_filename[1]
   song.artist_name= split_filename[0]
-  song.save
+
   song
 end
 
+def self.create_from_filename(filename)
+ parts = filename.split(" - ")
+ artist_name = parts[0]
+ song_name = parts[1].gsub(".mp3", "")
+
+ song = self.create
+ song.name = song_name
+ song.artist_name = artist_name
+ song
+end
 
 
 
